@@ -1,0 +1,7 @@
+{
+  "residences": [
+    { "id": 1, "name": "Résidence A", "address": "Rue 123", "image": "assets/imageA.png", "status": "Disponible" },
+    { "id": 2, "name": "Résidence B", "address": "Mourouj", "image": "assets/image.png", "status": "En Construction" },
+    { "id": 3, "name": "Résidence C", "address": "Rue 456", "image": "assets/imageC.png", "status": "Vendu" }
+  ]
+}
