@@ -20,12 +20,17 @@ export class ResidenceService {
   getResidenceList():Observable<Residence[]>{
     return this.http.get<Residence[]>('http://localhost:3000/residences')
   }
-  addResidence(residence: Residence): void {
-    const newId = this.residences.length + 1;
-    this.residences.push({ ...residence, id: newId });
+  addResidence(residence: Residence): Observable<Residence> {
+    const newId = this.residences.length + 1; // Generate a new ID
+    const residenceWithId = { ...residence, id: newId }; // Add the ID to the residence object
+    return this.http.post<Residence>('http://localhost:3000/residences', residenceWithId);
+  }
+  deleteResidence(id: number): Observable<void> {
+    return this.http.delete<void>(`http://localhost:3000/residences/${id}`);
   }
 
-  getResidenceById(id: number): Residence | null {
-    return this.residences.find(res => res.id === id) || null;
+
+  getResidenceById(id: number): Observable<Residence> {
+    return this.http.get<Residence>('http://localhost:3000/residences/'+id)
   }
 }

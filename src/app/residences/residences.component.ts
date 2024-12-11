@@ -21,7 +21,12 @@ export class ResidencesComponent implements OnInit {
       (data:Residence[])=>{this.listResidences = data});
     this.filteredResidences = [...this.listResidences];  // Initializing the filtered list
   }
-
+supp(id:number){
+  this.residenceService.deleteResidence(id).subscribe(() => {
+    alert('Residence deleted successfully!');
+    this.listResidences = this.listResidences.filter(res => res.id !== id); // Update the local list
+  });
+}
 
   // Show residence address
   showLocation(residence: Residence) {

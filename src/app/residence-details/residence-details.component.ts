@@ -19,10 +19,8 @@ export class ResidenceDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const residenceId = Number(this.route.snapshot.paramMap.get('id'));
-    this.residence = this.residenceService.getResidenceById(residenceId);
+    this.residenceService.getResidenceById(residenceId).subscribe(
+      (data:Residence)=>{this.residence = data});
 
-    if (!this.residence) {
-      this.notFound = true;
-    }
   }
 }
